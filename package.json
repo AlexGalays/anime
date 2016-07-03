@@ -2,7 +2,7 @@
   "name": "animejs",
   "version": "1.0.0",
   "description": "Polyvalent JavaScript animation engine",
-  "main": "anime.min.js",
+  "main": "anime.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/juliangarnier/anime.git"
