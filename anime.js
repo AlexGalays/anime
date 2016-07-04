@@ -29,7 +29,7 @@
     loop: false,
     autoplay: true,
     direction: 'normal',
-    easing: 'easeOutElastic',
+    easing: 'easeOutQuad',
     elasticity: 400,
     round: false,
     begin: undefined,
