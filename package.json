@@ -22,6 +22,5 @@
   "bugs": {
     "url": "https://github.com/juliangarnier/anime/issues"
   },
-  "homepage": "http://anime-js.com",
-  "files": ["anime.js"]
+  "homepage": "http://anime-js.com"
 }
