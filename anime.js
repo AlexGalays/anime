@@ -1,23 +1,10 @@
-/*
- * Anime v1.0.0
- * http://anime-js.com
- * JavaScript animation engine
- * Copyright (c) 2016 Julian Garnier
- * http://juliangarnier.com
- * Released under the MIT license
- */
 
 (function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define([], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // Node. Does not work with strict CommonJS, but
-    // only CommonJS-like environments that support module.exports,
-    // like Node.
-    module.exports = factory();
-  } else {
-    // Browser globals (root is window)
+  if (typeof module === 'object' && module.exports) {
+    module.exports.default = factory();
+  }
+  else {
+    // Browser global
     root.anime = factory();
   }
 }(this, function () {
@@ -309,11 +296,9 @@
   var getProperties = function(params, settings) {
     var props = [];
     for (var p in params) {
-      if (!defaultSettings.hasOwnProperty(p) && p !== 'targets') {
-        var prop = is.object(params[p]) ? cloneObject(params[p]) : {value: params[p]};
-        prop.name = p;
-        props.push(mergeObjects(prop, settings));
-      }
+      var prop = is.object(params[p]) ? cloneObject(params[p]) : {value: params[p]};
+      prop.name = p;
+      props.push(mergeObjects(prop, settings));
     }
     return props;
   }
@@ -488,9 +473,9 @@
 
   // Animation
 
-  var createAnimation = function(params) {
+  var createAnimation = function(targets, params) {
     var anim = {};
-    anim.animatables = getAnimatables(params.targets);
+    anim.animatables = getAnimatables(targets);
     anim.settings = mergeObjects(params, defaultSettings);
     anim.properties = getProperties(params, anim.settings);
     anim.tweens = getTweens(anim.animatables, anim.properties);
@@ -506,9 +491,9 @@
 
   var animations = [];
 
-  var animation = function(params) {
+  var animation = function(targets, params) {
 
-    var anim = createAnimation(params);
+    var anim = createAnimation(targets, params);
     var time = {};
 
     time.tick = function() {
@@ -551,7 +536,7 @@
     }
 
     anim.play = function(params) {
-      if (params) anim = mergeObjects(createAnimation(mergeObjects(params, anim.settings)), anim);
+      if (params) anim = mergeObjects(createAnimation(targets, mergeObjects(params, anim.settings)), anim);
       anim.pause();
       anim.running = true;
       time.start = +new Date();

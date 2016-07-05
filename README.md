@@ -107,8 +107,7 @@ Specific property parameters are :
 Example:
 
 ```javascript
-anime({
-  targets: 'div',
+anime('div', {
   translateX: '13rem',
   rotate: {
     value: 180,
@@ -145,8 +144,7 @@ Available function arguments:
 Example:
 
 ```javascript
-anime({
-  targets: 'div',
+anime('div', {
   translateX: '13.5rem',
   scale: [.75, .9],
   delay: function(el, index) {
@@ -191,8 +189,7 @@ Example:
 ```
 ```javascript
 
-anime({
-  targets: 'div',
+anime('div', {
   translateX: '3rem', // Will translate the div from '0rem' to '3rem'
   width: '100', // Will be converted to '100px' because the width is '20px' in the CSS
 });
@@ -205,8 +202,7 @@ Defines the start and end values of the animation.
 Example:
 
 ```javascript
-anime({
-  targets: 'div',
+anime('div', {
   translateX: [50, 250] // Will start at 50px and end at 250px
 });
 ```
@@ -227,8 +223,7 @@ Available function arguments:
 Examples:
 
 ```javascript
-anime({
-  targets: 'div',
+anime('div', {
   translateX: function(el, index) {
     return anime.random(50, 100); // Will set a random value from 50 to 100 to each divs
   }
@@ -238,8 +233,7 @@ anime({
 [Live example on CodePen](http://codepen.io/juliangarnier/pen/7f35cee232d7872be268c0a97f34cb2d?editors=0010)
 
 ```javascript
-anime({
-  targets: 'path',
+anime('path', {
   strokeDashoffset: function(el) {
     var pathLength = el.getTotalLength();
     return [pathLength, 0]; // Will use the exact path length for each targeted path elements
@@ -263,8 +257,7 @@ Play, pause, restart and seek the animation.
 | `.seek()` | Advance in the animation | a percentage, or an object {time: 1250}
 
 ```javascript
-var myAnimation = anime({
-  targets: 'div',
+var myAnimation = anime('div', {
   translateX: 100,
   autoplay: false
 });
@@ -295,8 +288,7 @@ Example:
 ```javascript
 var myPath = anime.path('path');
 
-anime({
-  targets: 'div',
+anime('div', {
   translateX: myPath,
   translateY: myPath,
   rotate: myPath

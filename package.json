@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Polyvalent JavaScript animation engine",
   "main": "anime.js",
+  "typings": "anime.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/juliangarnier/anime.git"
@@ -22,5 +23,5 @@
     "url": "https://github.com/juliangarnier/anime/issues"
   },
   "homepage": "http://anime-js.com",
-  "files": ["anime.js", "anime.min.js"]
+  "files": ["anime.js"]
 }
